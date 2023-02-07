@@ -1,0 +1,56 @@
+// const emptyProfileImage = <img className={s.emptyProfileImage} src='http://cdn.onlinewebfonts.com/svg/img_176857.png' alt='empty' />;
+// const ProfileImage = <img src={props.profile.photos.large} alt='photoOfUser' />;
+// const profileDesc = props.profile.lookingForAJobDescription;
+// const { fullName, photos } = props.profile;
+
+// export default class ProfileStatus extends React.Component {
+
+//   state = {
+//     editMode: false,
+//     status: this.props.status
+//   }
+
+//   activateEditMode = () => {
+//     this.setState({
+//       editMode: true
+//     })
+//   }
+
+//   deactivateEditMode = () => {
+//     this.setState({
+//       editMode: false
+//     })
+//     this.props.updateStatus(this.state.status)
+//   }
+
+//   onStatusChange = (e) => [
+//     this.setState({
+//       status: e.currentTarget.value
+//     })
+//   ]
+
+//   render() {
+    
+//     return (
+//       <div>
+
+//         {
+//           !this.state.editMode
+//           &&
+//           <div>
+//             <span onDoubleClick={this.activateEditMode}>{this.props.status || 'No Status )'}</span>
+//           </div>
+//         }
+
+//         {
+//           this.state.editMode
+//           &&
+//           <div>
+//             <input autoFocus onBlur={this.deactivateEditMode} value={this.state.status} />
+//           </div>
+//         }
+
+//       </div>
+//     )
+//   }
+// };

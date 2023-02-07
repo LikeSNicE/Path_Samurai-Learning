@@ -1,0 +1,22 @@
+.header {
+  grid-area: h;
+  background-color: bisque;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header img {
+  width: 40px;
+  /* margin: 0 auto;
+  display: flex;
+  padding: 10px 0;
+  cursor: pointer; */
+  height: 40px;
+  margin: 0 auto;
+}
+
+.loginBlock{
+  /* float: right; */
+  
+}
