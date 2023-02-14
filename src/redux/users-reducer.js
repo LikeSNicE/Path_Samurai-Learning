@@ -1,75 +1,3 @@
-// const FOLLOW = 'FOLLOW';
-// const UNFOLLOW = 'UNFOLLOW'
-// const SET_USERS = 'SET_USERS';
-
-// const initialState = {
-//   users: [
-//     {
-//       id: 1,
-//       photoUrl: 'https://avatars.mds.yandex.net/i?id=95601c38cc8eaae30d732e421f170d83c48bd971-4352795-images-thumbs&n=13&exp=1',
-//       followed: false, fullName: 'Nikita', status: 'i am a boss', location: { city: 'Astana', country: 'Kazakhstan' }
-//     },
-//     {
-//       id: 2,
-//       photoUrl: 'https://avatars.mds.yandex.net/i?id=95601c38cc8eaae30d732e421f170d83c48bd971-4352795-images-thumbs&n=13&exp=1',
-//       followed: true, fullName: 'Alex', status: 'i am a programmer', location: { city: 'Moscow', country: 'Russia' }
-//     },
-//     {
-//       id: 3,
-//       photoUrl: 'https://avatars.mds.yandex.net/i?id=95601c38cc8eaae30d732e421f170d83c48bd971-4352795-images-thumbs&n=13&exp=1',
-//       followed: false, fullName: 'Andrew', status: 'i am a boss too', location: { city: 'Kiev', country: 'Ukraine' }
-//     },
-//   ],
-// }
-
-// const usersReducer = (state = initialState, action) => {
-
-//   switch (action.type) {
-//     case FOLLOW : 
-//     return {
-//       ...state,
-//       users: state.users.map(u => {
-//         if(u.id === action.userId){
-//           return {...u,followed: true}
-//         }
-//         return u;
-//       })
-//     }
-
-//     case UNFOLLOW: 
-//       return {
-//         ...state,
-//         users: state.users.map(u => {
-//           if (u.id === action.userId) {
-//             return { ...u, followed: false }
-//           }
-//           return u;
-//         })
-//       }
-
-//     case SET_USERS:
-//       return {
-//         ...state, 
-//         users: [...state.users, ...action.users]
-//       }
-
-//     default: 
-//       return state;
-//   }
-// }
-
-// export const followAC = (userId) => ({ type: FOLLOW,userId })
-
-// export const unfollowAC = (userId) => {
-//   return {
-//     type: UNFOLLOW,
-//     userId
-//   }
-// }
-
-// export const setUsersAC = (users) => ({type: SET_USERS, users})
-
-// export default usersReducer;
 
 import { userAPI } from "../api/api";
 import { updateObjectInArray } from "../components/utils/objects-helper";
@@ -102,30 +30,12 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: updateObjectInArray(state.users, action.userId, 'id', { followed: true })
-        // users: state.users.map(u => {
-        //  if(u.id === action.userId){
-        //   return{
-        //     ...u,
-        //     followed: true
-        //   }
-        //  }
-        //   return u
-        // })
       }
     }
     case UNFOLLOW: {
       return {
         ...state,
         users: updateObjectInArray(state.users, action.userId, 'id', { followed: false })
-        // users: state.users.map(u => {
-        //   if(u.id === action.userId){
-        //     return{
-        //       ...u,
-        //       followed: false
-        //     }
-        //   }
-        //   return u
-        // })
       }
     }
     case SET_USERS: {
@@ -237,30 +147,12 @@ export const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCrea
 export const follow = (userId) => {
   return async (dispatch) => {
     followUnfollowFlow(dispatch, userId, userAPI.follow.bind(userAPI), followSuccess)
-
-     // dispatch(toggleFollowingProgress(true, userId))
-    // userAPI.follow(userId)
-    //   .then(data => {
-    //     if (data.resultCode === 0) {
-    //       dispatch(followSuccess(userId));
-    //     }
-    //     dispatch(toggleFollowingProgress(false, userId))
-    //   })
   }
 }
 
 export const unfollow = (userId) => {
   return (dispatch) => {
     followUnfollowFlow(dispatch, userId, userAPI.unfollow.bind(userAPI), unfollowSuccess)
-
-     // dispatch(toggleFollowingProgress(true, userId))
-    // userAPI.unfollow(userId)
-    //   .then(data => {
-    //     if (data.resultCode === 0) {
-    //       dispatch(unfollowSuccess(userId));
-    //     }
-    //     dispatch(toggleFollowingProgress(false, userId))
-    //   })
   }
 }
 

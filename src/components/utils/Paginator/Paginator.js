@@ -1,6 +1,7 @@
 
 import React,{useState}from "react";
 import styles from './Paginator.module.css';
+import cn from 'classnames';
 
 
 const Paginator = ({ currentPage, totalItemsCount, pageSize, onPageChanged,portionSize = 10}) => {
@@ -24,15 +25,15 @@ const Paginator = ({ currentPage, totalItemsCount, pageSize, onPageChanged,porti
       pages
       .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
       .map((p) => {
-        return <span className={ ({
-          [styles.selectedPage] : currentPage === p
-        }, styles.pageNumber)}
+        return (
+        <span className={ cn({[styles.selectedPage] : currentPage === p}, styles.pageNumber)}
         key={p}
         onClick={(e) => {
           onPageChanged(p);
         }}>
           {p}
         </span>
+        )
       })
       }
 

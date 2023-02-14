@@ -21,7 +21,7 @@ const ProfileDataForm = ({profile,handleSubmit,error}) => {
         </div>
       }
       <div>
-        <b>fullName :</b> {CreateField('FullName', 'email', Input, [], null)}
+        <b>fullName :</b> {CreateField('FullName', 'fullName', Input, [], null)}
       </div>
 
       <div>
@@ -36,7 +36,7 @@ const ProfileDataForm = ({profile,handleSubmit,error}) => {
 
       <div>
         <b>About me : </b>
-        {CreateField('AboutMe', 'AboutMe', TextArea, [], null)}
+        {CreateField('AboutMe', 'aboutMe', TextArea, [], null)}
       </div>
 
       <div>
@@ -54,10 +54,10 @@ const ProfileDataForm = ({profile,handleSubmit,error}) => {
   );
 };
 
-const ProfileDataFormReduxForm = reduxForm({
+const ProfileDataReduxForm = reduxForm({
   form: 'edit-profile',
   enableReinitialize: true,
   destroyOnUnmount: false
 })(ProfileDataForm)
 
-export default ProfileDataFormReduxForm;
+export default ProfileDataReduxForm;

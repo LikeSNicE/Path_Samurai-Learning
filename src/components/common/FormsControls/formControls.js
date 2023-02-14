@@ -13,7 +13,7 @@ export const Element = Element => ({ input, meta: {touched,error}, ...props }) =
   )
 }
 
-export const CreateField = (placeholder,name,component,validate,props = {}, text) => {
+export const CreateField = (placeholder,name,component,validate,props = {}, text='') => {
   return(
     <div>
       <Field placeholder={placeholder} name={name} component={component} validate={validate} {...props}/> {text}
