@@ -1,18 +1,28 @@
-.app-wrapper {
+/* .app-wrapper {
   margin: 0 auto;
-  display: grid;
+   display: grid; 
   width: 1200px;
-  grid-template-areas:
+   grid-template-areas:
     "h h"
-    "n c";
+    "n c"; 
 
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
-
-}
+} */
 
 .app-wrapper-content {
-  grid-area: c;
-  background-color: cornflowerblue;
+  display: flex;
+  padding: 10px 0;
+  /* grid-area: c;
+  background-color: cornflowerblue; */
+  /* display: grid;
+  grid-template-columns: 2fr 10fr; */
+}
+
+.app-right-side{
+  width: 100%;
+  background-color: hsl(217, 71%, 53%);
+  margin-left: 10px;
+  color: #000;
 }

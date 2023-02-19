@@ -31,12 +31,13 @@ class App extends Component{
     
      return (
     <div className='app-wrapper'>
-    
       <HeaderContainer />
+      {/* <Navbar/> */}
+      <div className="app-wrapper-content container">
       <Navbar/>
-      <div className="app-wrapper-content">
-      <Suspense fallback={<LoaderSpinner/>}>
-             <Routes>
+      <div className='app-right-side'>
+        <Suspense fallback={<LoaderSpinner/>}>
+             <Routes>            
                <Route path="/profile" element={<ProfileContainer />}>
                  <Route path=":userId" element={<ProfileContainer />} />
                </Route>
@@ -51,6 +52,7 @@ class App extends Component{
                <Route path='/login' element={<Login />} />
              </Routes>
       </Suspense>
+      </div>
       </div>
     </div>
   );

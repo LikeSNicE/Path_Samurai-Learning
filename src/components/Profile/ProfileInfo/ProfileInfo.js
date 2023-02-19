@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LoaderSpinner from '../../Spinner/Spinner';
-import s from './ProfileInfo.module.css';
+import s from './ProfileInfo.module.scss';
 import ProfileStatus from './ProfileStatus';
 import ProfileDataReduxForm from './ProfileDataForm';
 
@@ -12,8 +12,12 @@ const ProfileInfo = (props) => {
     return <LoaderSpinner />
   }
 
-  const emptyProfileImage = <img className={s.emptyProfileImage} src='https://img2.reactor.cc/pics/post/The-Witcher-%D1%84%D1%8D%D0%BD%D0%B4%D0%BE%D0%BC%D1%8B-%D0%A6%D0%B8%D1%80%D0%B8-Witcher-%D0%9F%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%B6%D0%B8-5676273.jpeg' alt='empty' />;
-  const ProfileImage = <img src={props.profile.photos.large} alt='photoOfUser' />;
+  const ProfileImage = <img src = {
+    props.profile.photos.large
+  }
+  className='is-rounded '
+  alt = 'photoOfUser'/> ;
+  const emptyProfileImage = <img classNameName={s.emptyProfileImage} src='https://img2.reactor.cc/pics/post/The-Witcher-%D1%84%D1%8D%D0%BD%D0%B4%D0%BE%D0%BC%D1%8B-%D0%A6%D0%B8%D1%80%D0%B8-Witcher-%D0%9F%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%B6%D0%B8-5676273.jpeg' alt='empty' />;
 
   const onMainPhotoSelected = (e) => {
     if (e.target.files.length) {
@@ -24,7 +28,6 @@ const ProfileInfo = (props) => {
   const onSubmit= (formData) =>{
     props.saveProfile(formData)
     .then(() => {setEditMode(false)})
-    // setEditMode(false);
   }
 
   return (
@@ -32,7 +35,23 @@ const ProfileInfo = (props) => {
       <div className={s.descriptionBlock}>
         {props.profile.photos.large ? ProfileImage : emptyProfileImage}
         <br />
-        {props.isOwner && <input type={'file'} onChange={onMainPhotoSelected} />}
+        {props.isOwner && 
+        // <input 
+        // type={'file'} onChange={onMainPhotoSelected} />
+         <div  className="file is-success">
+          <label label className="file-label">
+          <input className="file-input" type="file" name="resume" onChange={onMainPhotoSelected}/>
+          <span className="file-cta">
+      <span className="file-icon">
+        <i className="fas fa-upload"></i>
+      </span>
+      <span className="file-label">
+        Update Image
+      </span>
+    </span>
+  </label>
+  </div>
+        }
 
         {editMode ? 
           <ProfileDataReduxForm 
@@ -54,13 +73,7 @@ const ProfileInfo = (props) => {
 const ProfileData = ({ profile,isOwner,goEditForm }) => {
   return(
     <div> 
-      {isOwner 
-        && 
-      <div>
-        <button onClick={goEditForm}>Edit</button>
-      </div>
-      }
-
+    
       <div>
         <b>fullName :</b> {profile.fullName}
       </div>
@@ -74,12 +87,22 @@ const ProfileData = ({ profile,isOwner,goEditForm }) => {
         <b>About me :</b> {profile.aboutMe}
       </div>
 
-      <div className={s.profileContacts}>
-        <b className={s.profileContactsTitle}>Contacts :</b> {Object.keys(profile.contacts).map(key => {
+      <div classNameName={s.profileContacts}>
+        <b classNameName={s.profileContactsTitle}>Contacts :</b> {Object.keys(profile.contacts).map(key => {
           return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
         })
         }
       </div>
+
+       {
+         isOwner
+           &&
+           <div>
+           <button onClick = {
+             goEditForm
+           } > Edit </button> 
+           </div>
+       }
     </div>
   )
 }
@@ -87,7 +110,7 @@ const ProfileData = ({ profile,isOwner,goEditForm }) => {
 
 
 const Contact = ({ contactTitle, contactValue }) => {
-  return <div className={s.profileContactsItems}><b>{contactTitle} :</b> {contactValue} </div>
+  return <div classNameName={s.profileContactsItems}><b>{contactTitle} :</b> {contactValue} </div>
 }
 
 export default ProfileInfo;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import { CreateField,Element} from '../../common/FormsControls/formControls';
-import s from './ProfileInfo.module.css';
+import s from './ProfileInfo.module.scss';
 import styles from '../../common/FormsControls/formControls.module.css';
 
 const ProfileDataForm = ({profile,handleSubmit,error}) => {
