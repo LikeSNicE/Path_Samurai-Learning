@@ -1,6 +1,6 @@
 
 import React,{useState}from "react";
-import styles from './Paginator.module.css';
+import styles from './Paginator.module.scss';
 import cn from 'classnames';
 
 
@@ -19,31 +19,50 @@ const Paginator = ({ currentPage, totalItemsCount, pageSize, onPageChanged,porti
 
   return (
     <div className={styles.paginator}>
-    {portionNumber > 1 && 
-    <button onClick={() => {setPortionNumber(portionNumber - 1)}}>Prev</button>}
-    {
-      pages
-      .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-      .map((p) => {
-        return (
-        <span className={ cn({[styles.selectedPage] : currentPage === p}, styles.pageNumber)}
-        key={p}
-        onClick={(e) => {
-          onPageChanged(p);
-        }}>
-          {p}
-        </span>
+      {portionNumber > 1 && (
+        <button
+          className={styles.btnPrev + " " + "pagination-previous"}
+          onClick={() => {
+            setPortionNumber(portionNumber - 1);
+          }}
+        >
+          Prev
+        </button>
+      )}
+      {pages
+        .filter(
+          (p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber
         )
-      })
-      }
+        .map((p) => {
+          return (
+            <span
+              className={cn(
+                { [styles.selectedPage]: currentPage === p },
+                styles.pageNumber,
+                'paginator-link'
+              )}
+              key={p}
+              onClick={(e) => {
+                onPageChanged(p);
+              }}
+            >
+              {p}
+            </span>
+          );
+        })}
 
-      {
-        portionCount > portionNumber && 
-        <button onClick={() => {setPortionNumber(portionNumber + 1)}}>Next</button>
-      }
-     
+      {portionCount > portionNumber && (
+        <button
+          className={styles.btnNext + " " + "pagination-next"}
+          onClick={() => {
+            setPortionNumber(portionNumber + 1);
+          }}
+        >
+          Next
+        </button>
+      )}
     </div>
-  )
+  );
 }
 
 export default Paginator;

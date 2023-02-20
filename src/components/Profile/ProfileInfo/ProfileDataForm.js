@@ -12,42 +12,42 @@ const ProfileDataForm = ({profile,handleSubmit,error}) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <button onClick={() => {}}>Save</button>
+        <button className={s.profileDataBtn} onClick={() => {}}>
+          Save
+        </button>
       </div>
 
-      {
-        error && <div className={styles.formSummaryError}>
-          {error}
-        </div>
-      }
+      {error && <div className={styles.formSummaryError}>{error}</div>}
       <div>
-        <b>fullName :</b> {CreateField('FullName', 'fullName', Input, [], null)}
+        <b>fullName :</b> {CreateField("FullName", "fullName", Input, [], null)}
       </div>
 
       <div>
-        <b>Looking for a Job :</b>{profile.lookingForAJob ? ' yes' : ' no'}
-        {CreateField('','lookingForAJob',Input,[],{type: 'checkbox'})}
+        <b>Looking for a Job :</b>
+        {profile.lookingForAJob ? " yes" : " no"}
+        {CreateField("", "lookingForAJob", Input, [], { type: "checkbox" })}
       </div>
 
       <div>
         <b>My Prof Skills : </b>
-        {CreateField('Skills','lookingForAJobDescription',TextArea,[],null)}
+        {CreateField("Skills", "lookingForAJobDescription", TextArea, [], null)}
       </div>
 
       <div>
         <b>About me : </b>
-        {CreateField('AboutMe', 'aboutMe', TextArea, [], null)}
+        {CreateField("AboutMe", "aboutMe", TextArea, [], null)}
       </div>
 
       <div>
-        <b>Contacts:</b>{Object.keys(profile.contacts).map(key => {
+        <b>Contacts:</b>
+        {Object.keys(profile.contacts).map((key) => {
           return (
             <div className={s.contact} key={key}>
-              <b>{key} : 
-              {CreateField(key ,'contacts.' + key,Input,[])}
+              <b>
+                {key} :{CreateField(key, "contacts." + key, Input, [])}
               </b>
             </div>
-          )
+          );
         })}
       </div>
     </form>

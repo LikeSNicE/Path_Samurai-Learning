@@ -15,22 +15,42 @@ const Navbar = (props) => {
     navBulma: ''
   })
  
-  return <nav className={s.nav}>
+  return (
+    <nav className={s.nav}>
       <div className={s.navItem}>
-        <NavLink to="/profile" className={({ isActive }) => (isActive ? s.navActive : s.navItem)}>
+        <NavLink
+          to="/profile"
+          className={({ isActive }) => (isActive ? s.navActive : s.navItem)}
+        >
           Profile
         </NavLink>
       </div>
       <div className={s.navItem}>
-        <NavLink to="/dialogs" className={({ isActive }) => (isActive ? s.navActive : s.navItem)}>
+        <NavLink
+          to="/dialogs"
+          className={({ isActive }) => (isActive ? s.navActive : s.navItem)}
+        >
           Dialogs
         </NavLink>
       </div>
       <div className={s.navItem}>
-        <NavLink to="/users" className={({ isActive }) => (isActive ? s.navActive : s.navItem)}>
+        <NavLink
+          to="/users"
+          className={({ isActive }) => (isActive ? s.navActive : s.navItem)}
+        >
           Users
         </NavLink>
       </div>
+
+      <div className={s.navItem}>
+        <NavLink
+          to="/posts"
+          className={({ isActive }) => (isActive ? s.navActive : s.navItem)}
+        >
+         Posts
+        </NavLink>
+      </div>
+
       <div className={s.navItem}>
         <NavLink to="/news">News</NavLink>
       </div>
@@ -40,7 +60,8 @@ const Navbar = (props) => {
       <div className={s.navItem}>
         <NavLink to="/settings">Setting</NavLink>
       </div>
-    </nav>;
+    </nav>
+  );
 }
 
 export default Navbar;

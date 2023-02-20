@@ -30,6 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "bulma": "^0.9.4",
     "sass": "^1.58.3"
   }
 }

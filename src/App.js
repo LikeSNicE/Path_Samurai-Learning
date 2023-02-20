@@ -16,6 +16,7 @@ import LoaderSpinner from './components/Spinner/Spinner';
 import { initializeApp } from './redux/app-reducer';
 import { withSuspense } from './hoc/withSuspense';
 import { Suspense } from 'react';
+import MyPostsContainer from './components/Profile/MyPosts/MyPostsContainer';
 
 const DialogsContainer = React.lazy(() => import ('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -44,6 +45,10 @@ class App extends Component{
                <Route path='/dialogs/*'
                  element={
                   <DialogsContainer/>
+                 }></Route>
+                 <Route path='/posts/*'
+                 element={
+                  <MyPostsContainer/>
                  }></Route>
                <Route path='/users/*' element={<UsersContainer />} />
                <Route path='/news' element={<News />} />

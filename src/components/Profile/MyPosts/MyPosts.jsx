@@ -1,5 +1,5 @@
-import React from 'react';
-import s from './MyPosts.module.css'
+import React,{useState} from 'react';
+import s from './MyPosts.module.scss'
 import Post from './Post/Post';
 import { Field,reduxForm } from 'redux-form';
 import { validate,maxLength } from '../../utils/validation';
@@ -14,37 +14,46 @@ const MyPosts = React.memo(props => {
     props.addPost(values.addNewPostProfile)
   }
 
+
+
   return (
-    <div className={s.postsBlock} >
-      <h3>My posts</h3>
+    <div className={s.postsBlock}>
+      <h3 className="title has-text-black">Posts</h3>
       <AddNewPostProfileReduxForm onSubmit={onAddPost}/>
       <div className={s.posts}>
-        {postsElements}
+        {
+          postsElements
+        }
       </div>
     </div>
   );
 });
 
-const maxLength10 = maxLength(10);
+const maxLength10 = maxLength(500);
 const TextArea = Element('textarea')
 
 const addNewPostProfile = (props) => {
-  return(
+  return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field 
-        name={'addNewPostProfile'} 
-        placeholder='Wanna see? Just write a new Post' 
-        // component={'textarea'}
-        component={TextArea}
-        validate={[validate,maxLength10]}
+        <Field
+          name={"addNewPostProfile"}
+          placeholder="Wanna see? Just write a new Post"
+          className={s.postsTextArea}
+          component={TextArea}
+          validate={[validate, maxLength10]}
         />
       </div>
       <div>
-        <button>Add post</button>
+        <button class="button">
+          <span class="icon is-small">
+            <i class="fas fa-plus"></i>
+          </span>
+          <span>Add new Post</span>
+        </button>
       </div>
     </form>
-  )
+  );
 }
 
 const AddNewPostProfileReduxForm = reduxForm({
