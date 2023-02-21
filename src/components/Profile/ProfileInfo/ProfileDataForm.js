@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import { CreateField,Element} from '../../common/FormsControls/formControls';
 import s from './ProfileInfo.module.scss';
-import styles from '../../common/FormsControls/formControls.module.css';
+import styles from '../../common/FormsControls/formControls.module.scss';
 
 const ProfileDataForm = ({profile,handleSubmit,error}) => {
 
@@ -18,8 +18,12 @@ const ProfileDataForm = ({profile,handleSubmit,error}) => {
       </div>
 
       {error && <div className={styles.formSummaryError}>{error}</div>}
+
       <div>
-        <b>fullName :</b> {CreateField("FullName", "fullName", Input, [], null)}
+        <b className={s.profileDataEditTitle}>fullName :</b>{" "}
+        {CreateField("FullName", "fullName", Input, [], {
+          className: "input",
+        })}
       </div>
 
       <div>
@@ -29,22 +33,29 @@ const ProfileDataForm = ({profile,handleSubmit,error}) => {
       </div>
 
       <div>
-        <b>My Prof Skills : </b>
-        {CreateField("Skills", "lookingForAJobDescription", TextArea, [], null)}
+        <b className={s.profileDataEditTitle}>My Prof Skills : </b>
+        {CreateField("Skills", "lookingForAJobDescription", TextArea, [], {
+          className: "textarea",
+        })}
       </div>
 
       <div>
-        <b>About me : </b>
-        {CreateField("AboutMe", "aboutMe", TextArea, [], null)}
+        <b className={s.profileDataEditTitle}>About me : </b>
+        {CreateField("AboutMe", "aboutMe", TextArea, [], {
+          className: "textarea",
+        })}
       </div>
 
-      <div>
-        <b>Contacts:</b>
+      <div className={s.contact}>
+        <b className={s.contactTitle}>Contacts : </b>
         {Object.keys(profile.contacts).map((key) => {
           return (
-            <div className={s.contact} key={key}>
-              <b>
-                {key} :{CreateField(key, "contacts." + key, Input, [])}
+            <div key={key}>
+              <b className={s.contactSubtitle}>
+                {key} :
+                {CreateField(key, "contacts." + key, Input, [], {
+                  className: "input",
+                })}
               </b>
             </div>
           );

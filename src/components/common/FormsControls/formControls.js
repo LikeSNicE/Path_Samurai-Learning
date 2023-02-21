@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './formControls.module.css'
+import styles from './formControls.module.scss'
 import { Field } from "redux-form";
 
 

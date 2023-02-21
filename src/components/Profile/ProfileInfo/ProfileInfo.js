@@ -90,7 +90,7 @@ const ProfileData = ({ profile, isOwner, goEditForm }) => {
       {isOwner && (
         <div>
           <button onClick={goEditForm} className={s.profileDataBtn}>
-            Edit
+            Edit Prorile/Contacts
           </button>
         </div>
       )}

@@ -1,64 +1,28 @@
 import React from 'react';
 import s from './Navbar.module.scss';
 import {NavLink} from 'react-router-dom';
-import { addSideBarActionCreator, onUpdateTextSideBarActionCreator } from '../../redux/sidebar-reducer';
-import Nav from './nav/nav';
+import CustomLink from '../CustomLink';
+// import { addSideBarActionCreator, onUpdateTextSideBarActionCreator } from '../../redux/sidebar-reducer';
+// import Nav from './nav/nav';
 // import FriendsList from '../FriendsList/FriendsList';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 
 
 
 const Navbar = (props) => {
 
-  const navClasses = classNames({
-    nav: s.nav,
-    navBulma: ''
-  })
- 
+    
+
   return (
     <nav className={s.nav}>
       <div className={s.navItem}>
-        <NavLink
-          to="/profile"
-          className={({ isActive }) => (isActive ? s.navActive : s.navItem)}
-        >
-          Profile
-        </NavLink>
+        <CustomLink to="/profile">Profile</CustomLink>
       </div>
       <div className={s.navItem}>
-        <NavLink
-          to="/dialogs"
-          className={({ isActive }) => (isActive ? s.navActive : s.navItem)}
-        >
-          Dialogs
-        </NavLink>
+        <CustomLink to="/dialogs">Dialogs</CustomLink>
       </div>
       <div className={s.navItem}>
-        <NavLink
-          to="/users"
-          className={({ isActive }) => (isActive ? s.navActive : s.navItem)}
-        >
-          Users
-        </NavLink>
-      </div>
-
-      <div className={s.navItem}>
-        <NavLink
-          to="/posts"
-          className={({ isActive }) => (isActive ? s.navActive : s.navItem)}
-        >
-         Posts
-        </NavLink>
-      </div>
-
-      <div className={s.navItem}>
-        <NavLink to="/news">News</NavLink>
-      </div>
-      <div className={s.navItem}>
-        <NavLink to="/music">Music</NavLink>
-      </div>
-      <div className={s.navItem}>
-        <NavLink to="/settings">Setting</NavLink>
+        <CustomLink to="/users">Users</CustomLink>
       </div>
     </nav>
   );

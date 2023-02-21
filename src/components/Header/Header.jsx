@@ -10,7 +10,8 @@ const Header = (props) => {
 
   //   {props.isAuth ? <div>{props.login} - <button onClick={props.logout}>LogOut</button></div>: <NavLink className={s.loginBlock} to={'/login'}>Login</NavLink>}
   // </header>
-  return <section className="hero is-link header">
+  return (
+    <section className="hero is-link header">
       <div className="hero-head">
         <nav className="navbar container">
           <div className="navbar-brand">
@@ -21,20 +22,32 @@ const Header = (props) => {
           <div className="navbar-menu">
             <div className="navbar-end">
               <div className="navbar-item">
-                {props.isAuth ? <div className="is-flex">
+                {props.isAuth ? (
+                  <div className="is-flex">
                     <div class="navbar-item">{props.login}</div>
-                    <button className="button is-link is-inverted" onClick={props.logout}>
+                    <button
+                      className="button is-link is-inverted"
+                      onClick={props.logout}
+                    >
                       <span>Log Out</span>
                     </button>
-                  </div> : <div>
-                    <Link to={"/login"}>Login</Link>
-                  </div>}
+                  </div>
+                ) : (
+                  <div>
+                    <button className="button is-light">
+                      <span>
+                        <Link to={"/login"}>Login</Link>
+                      </span>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </nav>
       </div>
-    </section>;
+    </section>
+  );
 }
 
 export default Header;
